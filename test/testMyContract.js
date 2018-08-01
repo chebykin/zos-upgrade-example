@@ -7,7 +7,6 @@ contract('MyContract', () => {
             console.log('start');
             const myContract_v0 = await MyContract_v0.new();
             const proxy = await AdminUpgradeabilityProxy.new(myContract_v0.address);
-            proxy.upgradeTo(myContract_v0.address);
             let myContract = await MyContract_v0.at(proxy.address);
             const value = 42;
             await myContract.initialize(value);
